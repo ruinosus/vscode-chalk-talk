@@ -43,4 +43,14 @@ mistake in the text shows its line where the lesson would be. Everything runs lo
 The syntax: [text.md](https://github.com/ruinosus/chalk-talk/blob/main/skills/chalk-talk/references/text.md). The lessons
 come from [chalk-talk](https://github.com/ruinosus/chalk-talk), the same engine as its Claude skill.
 
+## Install by hand
+
+Not in the Marketplace yet:
+
+```
+npm install
+npm run package                                  # chalk-talk-0.1.0.vsix
+code --install-extension chalk-talk-0.1.0.vsix
+```
+
 MIT.

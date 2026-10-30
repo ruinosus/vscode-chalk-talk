@@ -1,0 +1,17 @@
+/* The lesson's chrome in VS Code's colours; the drawing keeps its paper (or chalkboard). */
+.chalk-talk.is-compact {
+  --ink: var(--vscode-editor-foreground);
+  --muted: var(--vscode-descriptionForeground);
+  --line: var(--vscode-widget-border, var(--vscode-editorWidget-border));
+  --card: var(--vscode-editorWidget-background);
+  --accent: var(--vscode-button-background);
+  --on-accent: var(--vscode-button-foreground);
+  --button-line: var(--vscode-button-border, var(--vscode-editorWidget-border));
+  font-family: var(--vscode-font-family);
+}
+.chalk-talk-error {
+  background: var(--vscode-inputValidation-warningBackground);
+  border-color: var(--vscode-inputValidation-warningBorder);
+  color: var(--vscode-editor-foreground);
+}
+.chalk-talk-error code { background: none; color: var(--vscode-descriptionForeground); }

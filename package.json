@@ -1,0 +1,51 @@
+{
+  "name": "chalk-talk",
+  "displayName": "Chalk Talk",
+  "description": "Hand-drawn lessons that draw themselves, chapter by chapter, in the Markdown preview — from a chalk-talk or chalk-mermaid code block.",
+  "version": "0.1.0",
+  "publisher": "ruinosus",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ruinosus/vscode-chalk-talk.git"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Visualization",
+    "Education"
+  ],
+  "keywords": [
+    "markdown",
+    "mermaid",
+    "diagram",
+    "hand-drawn",
+    "explainer",
+    "lesson"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "markdown.markdownItPlugins": true,
+    "markdown.previewScripts": [
+      "./media/mount.global.js"
+    ],
+    "markdown.previewStyles": [
+      "./media/preview.css"
+    ]
+  },
+  "scripts": {
+    "build": "tsc --noEmit && node build.mjs",
+    "package": "npm run build && npx -y @vscode/vsce@3 package --no-dependencies"
+  },
+  "dependencies": {
+    "chalk-talk": "file:../chalk-talk/npm"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "1.80.0",
+    "esbuild": "0.24.0",
+    "typescript": "5.6.3"
+  }
+}

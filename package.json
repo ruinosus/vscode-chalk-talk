@@ -40,7 +40,7 @@
     "package": "npm run build && npx -y @vscode/vsce@3 package --no-dependencies"
   },
   "dependencies": {
-    "chalk-talk": "^0.17.2"
+    "chalk-talk": "^0.18.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

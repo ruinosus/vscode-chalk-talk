@@ -1,8 +1,8 @@
 {
   "name": "chalk-talk",
   "displayName": "Chalk Talk",
-  "description": "Hand-drawn lessons that draw themselves, chapter by chapter, in the Markdown preview — from a chalk-talk or chalk-mermaid code block.",
-  "version": "0.1.0",
+  "description": "Hand-drawn lessons that draw themselves, chapter by chapter, in the Markdown preview — from a chalk-talk or chalk-mermaid code block — and the syntax of both lit in the editor.",
+  "version": "0.2.0",
   "publisher": "ruinosus",
   "license": "MIT",
   "repository": {
@@ -14,7 +14,8 @@
   },
   "categories": [
     "Visualization",
-    "Education"
+    "Education",
+    "Programming Languages"
   ],
   "keywords": [
     "markdown",
@@ -33,11 +34,72 @@
     ],
     "markdown.previewStyles": [
       "./media/preview.css"
+    ],
+    "languages": [
+      {
+        "id": "chalk-talk",
+        "aliases": [
+          "Chalk Talk",
+          "chalk-talk"
+        ],
+        "extensions": [
+          ".chalk"
+        ],
+        "configuration": "./chalk-talk.language-configuration.json"
+      },
+      {
+        "id": "mermaid",
+        "aliases": [
+          "Mermaid",
+          "mermaid"
+        ],
+        "extensions": [
+          ".mmd",
+          ".mermaid"
+        ],
+        "configuration": "./mermaid.language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "chalk-talk",
+        "scopeName": "source.chalk-talk",
+        "path": "./syntaxes/chalk-talk.tmLanguage.json",
+        "embeddedLanguages": {
+          "meta.embedded.inline.json": "json"
+        }
+      },
+      {
+        "language": "mermaid",
+        "scopeName": "source.chalk-mermaid",
+        "path": "./syntaxes/chalk-mermaid.tmLanguage.json"
+      },
+      {
+        "scopeName": "markdown.chalk-talk.codeblock",
+        "path": "./syntaxes/markdown-chalk-talk.json",
+        "injectTo": [
+          "text.html.markdown"
+        ],
+        "embeddedLanguages": {
+          "meta.embedded.block.chalk-talk": "chalk-talk"
+        }
+      },
+      {
+        "scopeName": "markdown.chalk-mermaid.codeblock",
+        "path": "./syntaxes/markdown-chalk-mermaid.json",
+        "injectTo": [
+          "text.html.markdown"
+        ],
+        "embeddedLanguages": {
+          "meta.embedded.block.mermaid": "mermaid"
+        }
+      }
     ]
   },
   "scripts": {
     "build": "tsc --noEmit && node build.mjs",
-    "package": "npm run build && npx -y @vscode/vsce@3 package --no-dependencies"
+    "package": "npm run build && npm run check && npx -y @vscode/vsce@3 package --no-dependencies",
+    "check": "node check-grammar.mjs"
   },
   "dependencies": {
     "chalk-talk": "^0.19.1"
@@ -46,6 +108,8 @@
     "@types/node": "^22.0.0",
     "@types/vscode": "1.80.0",
     "esbuild": "0.24.0",
-    "typescript": "5.6.3"
+    "typescript": "5.6.3",
+    "vscode-oniguruma": "2.0.1",
+    "vscode-textmate": "9.3.2"
   }
 }

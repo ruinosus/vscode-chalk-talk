@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Mermaid (Chalk Talk)",
+  "scopeName": "source.chalk-mermaid",
+  "patterns": [
+    { "include": "#directive" },
+    { "include": "#chalk" },
+    { "include": "#comment" },
+    { "include": "#frontmatter" },
+    { "include": "#kind" },
+    { "include": "#label" },
+    { "include": "#string" },
+    { "include": "#entity" },
+    { "include": "#arrow" },
+    { "include": "#keyword" },
+    { "include": "#message" },
+    { "include": "#number" }
+  ],
+  "repository": {
+    "directive": { "match": "%%\\{.*\\}%%", "name": "meta.preprocessor.directive.mermaid" },
+    "chalk": {
+      "patterns": [
+        { "match": "^\\s*(%%)\\s*(title)\\s+(.*)$", "captures": { "1": { "name": "punctuation.definition.comment.mermaid" }, "2": { "name": "keyword.other.title.chalk-talk" }, "3": { "name": "markup.heading.title.chalk-talk entity.name.section.chalk-talk" } } },
+        { "match": "^\\s*(%%)\\s*(#)\\s+(.*)$", "captures": { "1": { "name": "punctuation.definition.comment.mermaid" }, "2": { "name": "punctuation.definition.heading.chalk-talk" }, "3": { "name": "markup.heading.chapter.chalk-talk entity.name.section.chalk-talk" } } },
+        { "match": "^\\s*(%%)\\s*(>)\\s+(.*)$", "captures": { "1": { "name": "punctuation.definition.comment.mermaid" }, "2": { "name": "punctuation.definition.quote.chalk-talk" }, "3": { "name": "markup.quote.narration.chalk-talk" } } }
+      ]
+    },
+    "comment": { "match": "%%.*$", "name": "comment.line.percentage.mermaid" },
+    "frontmatter": { "begin": "\\A---\\s*$", "end": "^---\\s*$", "name": "meta.frontmatter.mermaid", "patterns": [{ "include": "source.yaml" }] },
+    "kind": { "match": "^\\s*(flowchart|graph|sequenceDiagram|classDiagram(?:-v2)?|stateDiagram(?:-v2)?|erDiagram|journey|gantt|pie|quadrantChart|requirementDiagram|gitGraph|C4Context|C4Container|C4Component|C4Dynamic|C4Deployment|mindmap|timeline|zenuml|sankey(?:-beta)?|xychart(?:-beta)?|block(?:-beta)?|packet(?:-beta)?|kanban|architecture(?:-beta)?|radar(?:-beta)?|treemap(?:-beta)?|venn(?:-beta)?)\\b(?:\\s+(TB|TD|BT|RL|LR))?", "captures": { "1": { "name": "keyword.control.diagram.mermaid" }, "2": { "name": "constant.language.direction.mermaid" } } },
+    "keyword": { "match": "\\b(subgraph|end|direction|participant|actor|as|autonumber|activate|deactivate|create|destroy|box|Note|note|over|left of|right of|loop|alt|else|opt|par|and|rect|critical|break|classDef|class|linkStyle|style|click|callback|section|title|state|accTitle|accDescr|dateFormat|axisFormat|excludes|todayMarker|commit|branch|checkout|merge)\\b", "name": "keyword.other.mermaid" },
+    "label": { "match": "(\\|)([^|]*)(\\|)", "captures": { "1": { "name": "punctuation.definition.label.mermaid" }, "2": { "name": "string.unquoted.label.mermaid", "patterns": [{ "include": "#string" }, { "include": "#entity" }] }, "3": { "name": "punctuation.definition.label.mermaid" } } },
+    "string": { "begin": "\"", "end": "\"", "name": "string.quoted.double.mermaid", "patterns": [{ "include": "#entity" }, { "match": "<[^>]+>", "name": "entity.name.tag.html.mermaid" }] },
+    "entity": { "match": "#(?:[A-Za-z]+|\\d+);", "name": "constant.character.entity.mermaid" },
+    "arrow": { "match": "<<-->>|<<->>|--?>>|--?[x)]|-\\.+->?|=+>|<?-{2,}[>xo]?|~~~|\\|[|o]--|--[|o]\\{|\\}[|o]--|\\.\\.>|<\\|--|--\\*|\\*--|--o|o--", "name": "keyword.operator.arrow.mermaid" },
+    "message": { "match": "(:)\\s+([^%]*)$", "captures": { "1": { "name": "punctuation.separator.message.mermaid" }, "2": { "name": "string.unquoted.message.mermaid", "patterns": [{ "include": "#entity" }, { "match": "<br\\s*/?>", "name": "entity.name.tag.html.mermaid" }] } } },
+    "number": { "match": "\\b\\d+(?:\\.\\d+)?\\b", "name": "constant.numeric.mermaid" }
+  }
+}

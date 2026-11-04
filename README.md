@@ -40,6 +40,15 @@ sequenceDiagram
 `%% # chapter` and `%% > narration` are Mermaid comments: the same block still renders as a plain diagram elsewhere. A
 mistake in the text shows its line where the lesson would be. Everything runs locally.
 
+## The syntax, lit in the editor
+
+`.chalk` files and ```chalk-talk blocks are lit as chalk-talk: the header, the chapters (`# …`), the narration
+(`> …`), each step, its place and numbers, the texts and their `{v:0}`. `.mmd` files and ```chalk-mermaid and
+```mermaid blocks are lit as Mermaid — the kind, the arrows, the labels, the entity codes (`#quot;`) — with
+chalk-talk's comments (`%% title`, `%% # chapter`, `%% > narration`) standing out from the other `%%` comments. The
+diagrams that cast-list writes (`--diagrams`) are lit the same way. If another Mermaid extension is installed, VS Code
+uses one of the two for `.mmd`.
+
 The syntax: [text.md](https://github.com/ruinosus/chalk-talk/blob/main/skills/chalk-talk/references/text.md). The lessons
 come from [chalk-talk](https://github.com/ruinosus/chalk-talk), the same engine as its Claude skill.
 
@@ -49,8 +58,8 @@ Not in the Marketplace yet:
 
 ```
 npm install
-npm run package                                  # chalk-talk-0.1.0.vsix
-code --install-extension chalk-talk-0.1.0.vsix
+npm run package                                  # chalk-talk-0.2.0.vsix
+code --install-extension chalk-talk-0.2.0.vsix
 ```
 
 MIT.

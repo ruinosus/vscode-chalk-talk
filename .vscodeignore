@@ -4,3 +4,4 @@ build.mjs
 tsconfig.json
 .gitignore
 *.vsix
+check-grammar.mjs

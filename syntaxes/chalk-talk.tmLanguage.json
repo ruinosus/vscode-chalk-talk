@@ -1,0 +1,69 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Chalk Talk",
+  "scopeName": "source.chalk-talk",
+  "patterns": [
+    { "include": "#chapter" },
+    { "include": "#narration" },
+    { "include": "#header" },
+    { "include": "#quiz" },
+    { "include": "#json" },
+    { "include": "#table" },
+    { "include": "#step" }
+  ],
+  "repository": {
+    "chapter": { "match": "^\\s*(#)\\s+(.*)$", "captures": { "1": { "name": "punctuation.definition.heading.chalk-talk" }, "2": { "name": "markup.heading.chapter.chalk-talk entity.name.section.chalk-talk" } } },
+    "narration": { "match": "^\\s*(>)\\s+(.*)$", "captures": { "1": { "name": "punctuation.definition.quote.chalk-talk" }, "2": { "name": "markup.quote.narration.chalk-talk" } } },
+    "header": {
+      "begin": "^\\s*(title|id|category|theme|locale|background|size|param|switch|var|learning)\\b",
+      "beginCaptures": { "1": { "name": "keyword.other.header.chalk-talk" } },
+      "end": "$",
+      "patterns": [
+        { "match": "\\b(goal|question|answer|caveat|on|off|paper|chalkboard|dots|grid|plain)\\b", "name": "support.constant.chalk-talk" },
+        { "include": "#values" }
+      ]
+    },
+    "quiz": {
+      "match": "^\\s+([*-])\\s+(.*?)(?:\\s+(--)\\s+(.*))?$",
+      "captures": { "1": { "name": "punctuation.definition.list.chalk-talk" }, "2": { "name": "markup.list.option.chalk-talk" }, "3": { "name": "keyword.operator.chalk-talk" }, "4": { "name": "comment.line.explanation.chalk-talk" } }
+    },
+    "json": {
+      "begin": "^\\s*(json)\\s+(?=\\{)",
+      "beginCaptures": { "1": { "name": "keyword.control.step.chalk-talk" } },
+      "end": "$",
+      "contentName": "meta.embedded.inline.json",
+      "patterns": [{ "include": "source.json" }]
+    },
+    "table": { "match": "^\\s+(\\|.*\\|)\\s*$", "captures": { "1": { "name": "markup.other.table.chalk-talk", "patterns": [{ "match": "\\|", "name": "punctuation.separator.table.chalk-talk" }] } } },
+    "step": {
+      "begin": "^\\s*([A-Za-z_][\\w-]*)(?=\\s|:|$)",
+      "beginCaptures": { "1": { "name": "keyword.control.step.chalk-talk" } },
+      "end": "$",
+      "patterns": [
+        { "match": "\\b(at|right-of|left-of|above|below|gap|to|along|domain|range|box|values|labels|ticks|columns|noheader|ask|says|thinks|dashed|flip)\\b", "name": "keyword.other.chalk-talk" },
+        { "include": "#values" },
+        { "match": "\\b[A-Za-z_][\\w-]*\\b", "name": "variable.other.id.chalk-talk" }
+      ]
+    },
+    "values": {
+      "patterns": [
+        { "include": "#string" },
+        { "match": "\\b([A-Za-z_][\\w-]*)(=)", "captures": { "1": { "name": "entity.other.attribute-name.chalk-talk" }, "2": { "name": "keyword.operator.assignment.chalk-talk" } } },
+        { "match": "->|\\.\\.|:", "name": "keyword.operator.chalk-talk" },
+        { "match": "-?\\b\\d+(?:\\.\\d+)?(?:x\\d+)?\\b", "name": "constant.numeric.chalk-talk" },
+        { "match": ",", "name": "punctuation.separator.point.chalk-talk" }
+      ]
+    },
+    "string": {
+      "begin": "\"",
+      "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.chalk-talk" } },
+      "end": "\"",
+      "endCaptures": { "0": { "name": "punctuation.definition.string.end.chalk-talk" } },
+      "name": "string.quoted.double.chalk-talk",
+      "patterns": [
+        { "match": "\\\\.", "name": "constant.character.escape.chalk-talk" },
+        { "match": "\\{[^}]*\\}", "name": "constant.other.placeholder.chalk-talk" }
+      ]
+    }
+  }
+}

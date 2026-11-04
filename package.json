@@ -1,13 +1,13 @@
 {
-  "name": "chalk-talk",
-  "displayName": "Chalk Talk",
-  "description": "Hand-drawn lessons that draw themselves, chapter by chapter, in the Markdown preview — from a chalk-talk or chalk-mermaid code block — and the syntax of both lit in the editor.",
-  "version": "0.2.0",
+  "name": "dna",
+  "displayName": "DNA",
+  "description": "DNA's visual explainer in the Markdown preview: lessons that draw themselves, chapter by chapter, from a visual-explainer or visual-explainer-mermaid code block — and the syntax of both lit in the editor.",
+  "version": "0.3.0",
   "publisher": "ruinosus",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ruinosus/vscode-chalk-talk.git"
+    "url": "https://github.com/ruinosus/vscode-dna.git"
   },
   "engines": {
     "vscode": "^1.80.0"
@@ -23,7 +23,8 @@
     "diagram",
     "hand-drawn",
     "explainer",
-    "lesson"
+    "lesson",
+    "dna"
   ],
   "main": "./dist/extension.js",
   "activationEvents": [],
@@ -37,15 +38,16 @@
     ],
     "languages": [
       {
-        "id": "chalk-talk",
+        "id": "visual-explainer",
         "aliases": [
-          "Chalk Talk",
+          "Visual Explainer",
+          "visual-explainer",
           "chalk-talk"
         ],
         "extensions": [
           ".chalk"
         ],
-        "configuration": "./chalk-talk.language-configuration.json"
+        "configuration": "./visual-explainer.language-configuration.json"
       },
       {
         "id": "mermaid",
@@ -62,31 +64,31 @@
     ],
     "grammars": [
       {
-        "language": "chalk-talk",
-        "scopeName": "source.chalk-talk",
-        "path": "./syntaxes/chalk-talk.tmLanguage.json",
+        "language": "visual-explainer",
+        "scopeName": "source.visual-explainer",
+        "path": "./syntaxes/visual-explainer.tmLanguage.json",
         "embeddedLanguages": {
           "meta.embedded.inline.json": "json"
         }
       },
       {
         "language": "mermaid",
-        "scopeName": "source.chalk-mermaid",
-        "path": "./syntaxes/chalk-mermaid.tmLanguage.json"
+        "scopeName": "source.visual-explainer-mermaid",
+        "path": "./syntaxes/visual-explainer-mermaid.tmLanguage.json"
       },
       {
-        "scopeName": "markdown.chalk-talk.codeblock",
-        "path": "./syntaxes/markdown-chalk-talk.json",
+        "scopeName": "markdown.visual-explainer.codeblock",
+        "path": "./syntaxes/markdown-visual-explainer.json",
         "injectTo": [
           "text.html.markdown"
         ],
         "embeddedLanguages": {
-          "meta.embedded.block.chalk-talk": "chalk-talk"
+          "meta.embedded.block.visual-explainer": "visual-explainer"
         }
       },
       {
-        "scopeName": "markdown.chalk-mermaid.codeblock",
-        "path": "./syntaxes/markdown-chalk-mermaid.json",
+        "scopeName": "markdown.visual-explainer-mermaid.codeblock",
+        "path": "./syntaxes/markdown-visual-explainer-mermaid.json",
         "injectTo": [
           "text.html.markdown"
         ],
@@ -102,7 +104,7 @@
     "check": "node check-grammar.mjs"
   },
   "dependencies": {
-    "chalk-talk": "^0.19.1"
+    "@ruinosus/visual-explainer": "^0.20.1"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

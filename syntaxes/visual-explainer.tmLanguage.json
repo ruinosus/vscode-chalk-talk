@@ -1,0 +1,69 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Visual Explainer",
+  "scopeName": "source.visual-explainer",
+  "patterns": [
+    { "include": "#chapter" },
+    { "include": "#narration" },
+    { "include": "#header" },
+    { "include": "#quiz" },
+    { "include": "#json" },
+    { "include": "#table" },
+    { "include": "#step" }
+  ],
+  "repository": {
+    "chapter": { "match": "^\\s*(#)\\s+(.*)$", "captures": { "1": { "name": "punctuation.definition.heading.visual-explainer" }, "2": { "name": "markup.heading.chapter.visual-explainer entity.name.section.visual-explainer" } } },
+    "narration": { "match": "^\\s*(>)\\s+(.*)$", "captures": { "1": { "name": "punctuation.definition.quote.visual-explainer" }, "2": { "name": "markup.quote.narration.visual-explainer" } } },
+    "header": {
+      "begin": "^\\s*(title|id|category|theme|locale|background|size|param|switch|var|learning)\\b",
+      "beginCaptures": { "1": { "name": "keyword.other.header.visual-explainer" } },
+      "end": "$",
+      "patterns": [
+        { "match": "\\b(goal|question|answer|caveat|on|off|paper|chalkboard|dots|grid|plain)\\b", "name": "support.constant.visual-explainer" },
+        { "include": "#values" }
+      ]
+    },
+    "quiz": {
+      "match": "^\\s+([*-])\\s+(.*?)(?:\\s+(--)\\s+(.*))?$",
+      "captures": { "1": { "name": "punctuation.definition.list.visual-explainer" }, "2": { "name": "markup.list.option.visual-explainer" }, "3": { "name": "keyword.operator.visual-explainer" }, "4": { "name": "comment.line.explanation.visual-explainer" } }
+    },
+    "json": {
+      "begin": "^\\s*(json)\\s+(?=\\{)",
+      "beginCaptures": { "1": { "name": "keyword.control.step.visual-explainer" } },
+      "end": "$",
+      "contentName": "meta.embedded.inline.json",
+      "patterns": [{ "include": "source.json" }]
+    },
+    "table": { "match": "^\\s+(\\|.*\\|)\\s*$", "captures": { "1": { "name": "markup.other.table.visual-explainer", "patterns": [{ "match": "\\|", "name": "punctuation.separator.table.visual-explainer" }] } } },
+    "step": {
+      "begin": "^\\s*([A-Za-z_][\\w-]*)(?=\\s|:|$)",
+      "beginCaptures": { "1": { "name": "keyword.control.step.visual-explainer" } },
+      "end": "$",
+      "patterns": [
+        { "match": "\\b(at|right-of|left-of|above|below|gap|to|along|domain|range|box|values|labels|ticks|columns|noheader|ask|says|thinks|dashed|flip)\\b", "name": "keyword.other.visual-explainer" },
+        { "include": "#values" },
+        { "match": "\\b[A-Za-z_][\\w-]*\\b", "name": "variable.other.id.visual-explainer" }
+      ]
+    },
+    "values": {
+      "patterns": [
+        { "include": "#string" },
+        { "match": "\\b([A-Za-z_][\\w-]*)(=)", "captures": { "1": { "name": "entity.other.attribute-name.visual-explainer" }, "2": { "name": "keyword.operator.assignment.visual-explainer" } } },
+        { "match": "->|\\.\\.|:", "name": "keyword.operator.visual-explainer" },
+        { "match": "-?\\b\\d+(?:\\.\\d+)?(?:x\\d+)?\\b", "name": "constant.numeric.visual-explainer" },
+        { "match": ",", "name": "punctuation.separator.point.visual-explainer" }
+      ]
+    },
+    "string": {
+      "begin": "\"",
+      "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.visual-explainer" } },
+      "end": "\"",
+      "endCaptures": { "0": { "name": "punctuation.definition.string.end.visual-explainer" } },
+      "name": "string.quoted.double.visual-explainer",
+      "patterns": [
+        { "match": "\\\\.", "name": "constant.character.escape.visual-explainer" },
+        { "match": "\\{[^}]*\\}", "name": "constant.other.placeholder.visual-explainer" }
+      ]
+    }
+  }
+}

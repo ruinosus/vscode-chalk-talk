@@ -1,5 +1,5 @@
 /* The lesson's chrome in VS Code's colours; the drawing keeps its paper (or chalkboard). */
-.chalk-talk.is-compact {
+.visual-explainer.is-compact {
   --ink: var(--vscode-editor-foreground);
   --muted: var(--vscode-descriptionForeground);
   --line: var(--vscode-widget-border, var(--vscode-editorWidget-border));
@@ -9,9 +9,9 @@
   --button-line: var(--vscode-button-border, var(--vscode-editorWidget-border));
   font-family: var(--vscode-font-family);
 }
-.chalk-talk-error {
+.visual-explainer-error {
   background: var(--vscode-inputValidation-warningBackground);
   border-color: var(--vscode-inputValidation-warningBorder);
   color: var(--vscode-editor-foreground);
 }
-.chalk-talk-error code { background: none; color: var(--vscode-descriptionForeground); }
+.visual-explainer-error code { background: none; color: var(--vscode-descriptionForeground); }

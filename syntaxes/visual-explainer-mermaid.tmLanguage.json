@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-  "name": "Mermaid (Chalk Talk)",
-  "scopeName": "source.chalk-mermaid",
+  "name": "Mermaid (DNA)",
+  "scopeName": "source.visual-explainer-mermaid",
   "patterns": [
     { "include": "#directive" },
     { "include": "#chalk" },
@@ -20,9 +20,9 @@
     "directive": { "match": "%%\\{.*\\}%%", "name": "meta.preprocessor.directive.mermaid" },
     "chalk": {
       "patterns": [
-        { "match": "^\\s*(%%)\\s*(title)\\s+(.*)$", "captures": { "1": { "name": "punctuation.definition.comment.mermaid" }, "2": { "name": "keyword.other.title.chalk-talk" }, "3": { "name": "markup.heading.title.chalk-talk entity.name.section.chalk-talk" } } },
-        { "match": "^\\s*(%%)\\s*(#)\\s+(.*)$", "captures": { "1": { "name": "punctuation.definition.comment.mermaid" }, "2": { "name": "punctuation.definition.heading.chalk-talk" }, "3": { "name": "markup.heading.chapter.chalk-talk entity.name.section.chalk-talk" } } },
-        { "match": "^\\s*(%%)\\s*(>)\\s+(.*)$", "captures": { "1": { "name": "punctuation.definition.comment.mermaid" }, "2": { "name": "punctuation.definition.quote.chalk-talk" }, "3": { "name": "markup.quote.narration.chalk-talk" } } }
+        { "match": "^\\s*(%%)\\s*(title)\\s+(.*)$", "captures": { "1": { "name": "punctuation.definition.comment.mermaid" }, "2": { "name": "keyword.other.title.visual-explainer" }, "3": { "name": "markup.heading.title.visual-explainer entity.name.section.visual-explainer" } } },
+        { "match": "^\\s*(%%)\\s*(#)\\s+(.*)$", "captures": { "1": { "name": "punctuation.definition.comment.mermaid" }, "2": { "name": "punctuation.definition.heading.visual-explainer" }, "3": { "name": "markup.heading.chapter.visual-explainer entity.name.section.visual-explainer" } } },
+        { "match": "^\\s*(%%)\\s*(>)\\s+(.*)$", "captures": { "1": { "name": "punctuation.definition.comment.mermaid" }, "2": { "name": "punctuation.definition.quote.visual-explainer" }, "3": { "name": "markup.quote.narration.visual-explainer" } } }
       ]
     },
     "comment": { "match": "%%.*$", "name": "comment.line.percentage.mermaid" },

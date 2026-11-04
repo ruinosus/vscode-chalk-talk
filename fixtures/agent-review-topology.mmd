@@ -1,0 +1,70 @@
+flowchart LR
+  %% title Topology
+  %% agent-review 2.0.0
+  subgraph s3 ["Customer"]
+    n1(["Customer"])
+  end
+  subgraph s6 ["Orchestrators"]
+    n7["Orquestrador<br/><small>routes and hands over</small>"]
+  end
+  subgraph s9 ["Specialists"]
+    n2["Admissão<br/><small>specialist</small>"]
+    n3["Benefícios<br/><small>specialist</small>"]
+    n4["Facilities<br/><small>specialist</small>"]
+    n5["Férias<br/><small>specialist</small>"]
+    n6["Folha<br/><small>specialist</small>"]
+  end
+  subgraph s16 ["Not in the folder"]
+    n8["Mobilidade<br/><small>called, not in the folder</small>"]
+  end
+  subgraph s19 ["Flows"]
+    n9[/"Abrir caso no Workday<br/><small>flow</small>"/]
+    n10[/"Listar unidades<br/><small>flow</small>"/]
+  end
+  subgraph s23 ["Systems"]
+    n11[("workday.empresa.example<br/><small>HTTP</small>")]
+    n12[("Microsoft Dataverse<br/><small>connector</small>")]
+    n13[("RH Admissao MCP<br/><small>MCP server</small>")]
+    n14[("SharePoint<br/><small>connector</small>")]
+    n15[("Office 365 Outlook<br/><small>connector</small>")]
+    n16[("Knowledge in SharePoint<br/><small>knowledge</small>")]
+  end
+  n1 ==> n7
+  n7 ==>|"routed by «Admissão.»"| n2
+  n7 ==> n3
+  n7 ==> n4
+  n7 ==> n5
+  n7 ==>|"NO history · NO «CategoriaSolicitacao»"| n6
+  n7 -.->|"calls it, but it is not in the folder"| n8
+  n2 -->|"returns nothing"| n9
+  n3 --> n9
+  n4 -.->|"nobody calls it"| n10
+  n5 --> n9
+  n9 -->|"HTTP"| n11
+  n10 -.-> n12
+  n2 --> n13
+  n2 -->|"GetItems"| n14
+  n2 -->|"SendEmailV2"| n15
+  n2 --> n16
+  n3 -->|"SendEmailV2"| n15
+  n3 --> n16
+  n4 -->|"SendEmailV2"| n15
+  n4 --> n16
+  n5 -->|"SendEmailV2"| n15
+  n5 --> n16
+  n6 -->|"SendEmailV2"| n15
+  n6 --> n16
+  linkStyle 1 stroke:#b7791f,stroke-width:2px
+  linkStyle 5 stroke:#c0392b,stroke-width:2px
+  linkStyle 6 stroke:#888
+  linkStyle 7 stroke:#b7791f,stroke-width:2px
+  linkStyle 9 stroke:#888
+  linkStyle 12 stroke:#888
+  classDef bad fill:#fde2e1,stroke:#c0392b,color:#7b1d16,stroke-width:2px
+  classDef amber fill:#fff3d6,stroke:#b7791f,color:#5c3d0b,stroke-width:2px
+  classDef ok fill:#e3f4e8,stroke:#2f855a,color:#1c4532
+  classDef ghost fill:#f4f4f4,stroke:#888,color:#555,stroke-dasharray:5 4
+  classDef muted fill:#f4f4f4,stroke:#bbb,color:#666
+  class n8,n10,n12 ghost
+  class n6 bad
+  class n2,n9 amber

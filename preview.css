@@ -1,4 +1,4 @@
-/* The lesson's chrome in VS Code's colours; the drawing keeps its paper (or chalkboard). */
+/* The explainer's chrome in VS Code's colours; the drawing keeps its paper (or chalkboard). */
 .visual-explainer.is-compact {
   --ink: var(--vscode-editor-foreground);
   --muted: var(--vscode-descriptionForeground);

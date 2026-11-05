@@ -1,5 +1,5 @@
 // The extension (src/extension.ts with @ruinosus/visual-explainer/markdown, for VS Code's markdown-it) and the preview's script
-// (visual-explainer's mount.global.js: the engine, its fonts and Mermaid, which turns the blocks into lessons) and its colours.
+// (visual-explainer's mount.global.js: the engine, its fonts and Mermaid, which turns the blocks into explainers) and its colours.
 import { build } from 'esbuild'
 import { copyFileSync, mkdirSync } from 'node:fs'
 import { createRequire } from 'node:module'

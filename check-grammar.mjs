@@ -1,5 +1,5 @@
 // Checks the syntax grammars as VS Code reads them (vscode-textmate with the Oniguruma it uses): a visual-explainer
-// lesson, a Mermaid flowchart and sequence with visual-explainer's comments, and the fenced blocks in Markdown.
+// explainer, a Mermaid flowchart and sequence with visual-explainer's comments, and the fenced blocks in Markdown.
 import { readFileSync } from 'node:fs'
 import { createRequire } from 'node:module'
 import vsctm from 'vscode-textmate'

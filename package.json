@@ -2,7 +2,7 @@
   "name": "dna",
   "displayName": "DNA",
   "description": "DNA's visual explainer in the Markdown preview: explainers that draw themselves, chapter by chapter, from a visual-explainer or visual-explainer-mermaid code block — and the syntax of both lit in the editor.",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "publisher": "ruinosus",
   "license": "MIT",
   "repository": {
@@ -104,7 +104,7 @@
     "check": "node check-grammar.mjs"
   },
   "dependencies": {
-    "@ruinosus/visual-explainer": "^0.22.0"
+    "@ruinosus/visual-explainer": "^0.23.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
